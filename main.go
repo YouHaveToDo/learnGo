@@ -1,11 +1,17 @@
 package main
 
-import "fmt"
-
-func repeatMe(words ...string) {
-	fmt.Printf("%T\n", words)
-}
+import (
+	"fmt"
+	"learngo/accounts"
+)
 
 func main() {
-	repeatMe("nico", "jc", "me", "coco")
+	account := accounts.NewAccount("nico")
+	account.Deposit(10)
+	fmt.Println(account.Balance())
+	err := account.Withdraw(20)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(account.Balance())
 }
