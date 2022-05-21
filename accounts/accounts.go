@@ -1,6 +1,8 @@
 package accounts
 
-import "errors"
+import (
+	"errors"
+)
 
 // Account struct
 type Account struct {
@@ -22,7 +24,7 @@ func (a *Account) Deposit(amount int) {
 }
 
 // Balance of your account
-func (a Account) Balance() int {
+func (a *Account) Balance() int {
 	return a.balance
 }
 
@@ -33,4 +35,12 @@ func (a *Account) Withdraw(amount int) error {
 	}
 	a.balance -= amount
 	return nil
+}
+
+func (a *Account) ChangeOwner(newOwner string) {
+	a.owner = newOwner
+}
+
+func (a Account) Owner() string {
+	return a.owner
 }
